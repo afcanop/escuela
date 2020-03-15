@@ -5,37 +5,32 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header titlePanel">
+                <div class="card-header">
                     Cursos
-                    <a href="{{ route('courses.create') }}" class="btn btn-link btn-sm text-success"
-                        data-toggle="tooltip" data-placement="top" title="Agregar curso">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
-                    </a>
+                    <div class="dropdown dropleft">
+                        <button class="btn text-primary" type="button" id="menuPanel" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu " aria-labelledby="menuPanel">
+                            <a href="{{ route('courses.create') }}" class="dropdown-item" data-toggle="tooltip"
+                                data-placement="top" title="Agregar curso">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
 
                     {!! Form::open(['method' => 'GET', 'route' => 'courses.index', 'class' => 'form-inline my-2 my-lg-0
                     float-right', 'role' => 'search']) !!}
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="search" placeholder="Search..."
-                            value="{{ request('search') }}">
-                        <span class="input-group-append">
-                            <button class="btn btn-secondary" type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
                     {!! Form::close() !!}
-
-                    <br />
-                    <br />
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr class="text-center">
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Actions</th>
+                                    <th>Codigo</th>
+                                    <th>Nombre</th>
+                                    <th colspan="3"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,17 +38,22 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td class="tdActions">
+                                    <td class="text-center">
                                         <a href="{{ route('courses.show', $item->id) }}" data-toggle="tooltip"
                                             data-placement="top" title="Información curso">
-                                            <button class="btn btn-outline-info btn-sm"><i
+                                            <button class="btn btn-outline-primary btn-sm"><i
                                                     class="far fa-eye"></i></button>
                                         </a>
+                                    </td>
+                                    <td class="text-center ">
                                         <a href="{{ route('courses.edit', $item->id) }}" data-toggle="tooltip"
                                             data-placement="top" title="Editar curso">
-                                            <button class="btn btn-outline-primary btn-sm"><i
-                                                    class="far fa-edit"></i></button>
+                                            <button class="btn btn-outline-primary btn-sm">
+                                                <i class="far fa-edit"></i>
+                                            </button>
                                         </a>
+                                    </td>
+                                    <td class="text-center">
                                         {!! Form::open([
                                         'method' => 'DELETE',
                                         'route' => ['courses.destroy', $item->id],

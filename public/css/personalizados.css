@@ -1,0 +1,24 @@
+
+table > thead > tr {
+  text-transform: uppercase;
+}
+
+
+table > tbody > tr> td:nth-last-child(3) {
+  width: 10%;
+}
+table > tbody > tr> td:nth-last-child(2) {
+  width: 10%
+}
+table > tbody > tr> td:nth-last-child(1) {
+  width: 10%
+}
+
+.card-header{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
